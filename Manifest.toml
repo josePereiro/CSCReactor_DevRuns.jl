@@ -2,7 +2,7 @@
 
 julia_version = "1.10.0"
 manifest_format = "2.0"
-project_hash = "e44a7680232f540a1eb06bcb157c4186e71802ec"
+project_hash = "edbe318caccebe25aba785a4d0596ccdc09ef931"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -773,6 +773,7 @@ uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
 version = "2023.1.10"
 
 [[deps.NDHistograms]]
+deps = ["Distributions", "Random"]
 path = "/Users/Pereiro/.julia/dev/NDHistograms"
 uuid = "c9719566-2c26-451b-95bc-5aa9e2747dfa"
 version = "1.0.0-DEV"
