@@ -2,7 +2,7 @@
 
 julia_version = "1.10.0"
 manifest_format = "2.0"
-project_hash = "edbe318caccebe25aba785a4d0596ccdc09ef931"
+project_hash = "b5699cca1e44f608b8fd2bab8d4f8f906e214ca6"
 
 [[deps.AbstractFFTs]]
 deps = ["LinearAlgebra"]
@@ -91,7 +91,7 @@ uuid = "4e9b3aee-d8a1-5a3d-ad8b-7d824db253f0"
 version = "1.0.1+0"
 
 [[deps.CSCReactor_jlOs]]
-deps = ["LibSerialPort"]
+deps = ["Dates", "LibSerialPort", "Serialization"]
 path = "/Users/Pereiro/.julia/dev/CSCReactor_jlOs"
 uuid = "388fa371-fe3d-443c-9121-b1096b353e97"
 version = "1.0.0-DEV"

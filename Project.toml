@@ -6,9 +6,11 @@ version = "1.0.0-DEV"
 [deps]
 CSCReactor_jlOs = "388fa371-fe3d-443c-9121-b1096b353e97"
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 FFTW = "7a1cc6ca-52ef-59f5-83cd-3a7055c09341"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 NDHistograms = "c9719566-2c26-451b-95bc-5aa9e2747dfa"
+Serialization = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
 
 [compat]
 julia = "1.6"
