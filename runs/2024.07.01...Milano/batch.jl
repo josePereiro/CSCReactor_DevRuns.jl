@@ -24,10 +24,19 @@ let
     # $INO:PIN-MODE:PIN:MODE%
     @time res = send_csvcmd(sp, "INO", "PIN-MODE", 
         STIRREL_PIN, OUTPUT,
+        PUMP_3_PIN, OUTPUT,
+        CH1_LASER_PIN, OUTPUT,
+        CH1_VIAL_LED_PIN, INPUT_PULLUP,
+        CH1_CONTROL_LED_PIN, INPUT_PULLUP
     )
 
     while true
         try
+            # stirring
+            @time res = send_csvcmd(sp, "INO", "DIGITAL-S-PULSE", 
+                PUMP_3_PIN, 1, 500, 0;
+                log = true
+            )
             # stirring
             @time res = send_csvcmd(sp, "INO", "DIGITAL-S-PULSE", 
                 STIRREL_PIN, 1, 249, 0;
@@ -35,13 +44,15 @@ let
             )
             sleep(1.0)
 
-            @time pkg1 = send_csvcmd(sp, "INO", "PULSE-IN", CH1_CONTROL_LED_PIN, 100)
-            # isempty(pkg1["done_ack"]) && continue
+            @time send_csvcmd(sp, "INO", "ANALOG-WRITE", CH1_LASER_PIN, 255);
+
+            @time global pkg1 = send_csvcmd(sp, "INO", "PULSE-IN", CH1_CONTROL_LED_PIN, 100)
+            isempty(pkg1["done_ack"]) && continue
             val1 = parse(Int, pkg1["responses"][0]["data"][2])
             @show  val1
 
             @time pkg2 = send_csvcmd(sp, "INO", "PULSE-IN", CH1_VIAL_LED_PIN, 100)
-            # isempty(pkg2["done_ack"]) && continue
+            isempty(pkg2["done_ack"]) && continue
             val2 = parse(Int, pkg2["responses"][0]["data"][2])
             @show  val2
 
