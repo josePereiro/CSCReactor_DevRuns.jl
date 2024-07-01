@@ -56,7 +56,6 @@ let
             val2 = parse(Int, pkg2["responses"][0]["data"][2])
             @show  val2
 
-            
 
         catch err
             @error err
