@@ -21,7 +21,7 @@ end
 # Setup
 let
     send_csvcmd(sp, "INO", "PIN-MODE", 
-        # STIRREL_PIN, OUTPUT,
+        STIRREL_PIN, OUTPUT,
         # PUMP_1_PIN, OUTPUT,
         # PUMP_2_PIN, OUTPUT,
         # PUMP_3_PIN, OUTPUT,
@@ -60,16 +60,16 @@ let
             laser_pwm = mod(laser_pwm + 1, laser_pwm1)
             @time send_csvcmd(sp, "INO", "ANALOG-WRITE", LASER_PWMPIN, laser_pwm);
 
-            # # stirrel
-            # if time() - stirrel_last_time > stirrel_frec
-            #     # @time pkg1 = send_csvcmd(sp, "INO", "ANALOG-PULSE", STIRREL_PWMPIN, 180, 0, 250)
-            #     # $INO:DIGITAL-C-PULSE:PIN:VAL0:TIME:[VAL1]%
-            #     @time pkg1 = send_csvcmd(sp, "INO", "DIGITAL-S-PULSE", 
-            #         STIRREL_PWMPIN, 1, 200, 0
-            #     )
-            #     stirrel_last_time = time()
-            #     sleep(0.3) # relax
-            # end
+            # stirrel
+            if time() - stirrel_last_time > stirrel_frec
+                # @time pkg1 = send_csvcmd(sp, "INO", "ANALOG-PULSE", STIRREL_PWMPIN, 180, 0, 250)
+                # $INO:DIGITAL-C-PULSE:PIN:VAL0:TIME:[VAL1]%
+                @time pkg1 = send_csvcmd(sp, "INO", "DIGITAL-S-PULSE", 
+                    STIRREL_PWMPIN, 1, 249, 0
+                )
+                stirrel_last_time = time()
+                sleep(0.5) # relax
+            end
 
             # read sensors 1
             @time pkg1 = send_csvcmd(sp, "INO", "PULSE-IN", LED1_INPIN, 100)
